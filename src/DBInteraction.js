@@ -1,4 +1,4 @@
-import { googleProvider, rebase } from './base';
+import { rebase } from './base';
 
 export function saveGame(gameID) {
     // console.log("save user", user);
@@ -57,4 +57,29 @@ export function checkUser(gameID) {
         console.log("player error");
     })
 
+}
+
+export function addToGallery(artID, playerNumber, playerCanvas){
+    if (playerNumber == 1) {
+        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+            .update({
+                piece1: playerCanvas,
+            })
+    } else if (playerNumber == 2) {
+        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+            .update({
+                piece2: playerCanvas,
+            })
+    } else if (playerNumber == 3) {
+        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+            .update({
+                piece3: playerCanvas,
+            })
+    } else if (playerNumber == 4) {
+        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+            .update({
+                piece4: playerCanvas,
+            })
+    }
+    
 }

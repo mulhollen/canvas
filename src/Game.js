@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {checkGame, checkUser} from './DBInteraction';
+import {checkGame} from './DBInteraction';
 
 class Game extends Component {
     constructor(props) {

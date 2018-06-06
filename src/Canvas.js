@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import qr from './gameQRphone.png';
 import './App.css';
 
 class Canvas extends Component {
@@ -17,6 +18,7 @@ class Canvas extends Component {
             return (
                 <div>
                     <h1>carousel</h1>
+                    <img src={qr} alt="qr code" />
                 </div>
             );
         }

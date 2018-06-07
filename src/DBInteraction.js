@@ -1,16 +1,4 @@
-import { googleProvider, rebase } from './base';
-
-export function saveGame(gameID) {
-    // console.log("save user", user);
-    return rebase.initializedApp.database().ref().child(`games/${gameID}`)
-        .update({
-            start: false,
-            player1: true,
-            player2: false,
-            player3: false,
-            player4: false
-        })
-}
+import { rebase } from './base';
 
 export function checkGame(gameID) {
    rebase.fetch( 'games', {
@@ -26,6 +14,18 @@ export function checkGame(gameID) {
    }).catch(error => {
        console.log("data error");
    })    
+}
+
+export function saveGame(gameID) {
+    // console.log("save user", user);
+    return rebase.initializedApp.database().ref().child(`games/${gameID}`)
+        .update({
+            start: false,
+            player1: true,
+            player2: false,
+            player3: false,
+            player4: false
+        })
 }
 
 export function checkUser(gameID) {
@@ -57,4 +57,36 @@ export function checkUser(gameID) {
         console.log("player error");
     })
 
+}
+
+export function startGame(gameID){
+    return rebase.initializedApp.database().ref().child(`games/${gameID}`)
+        .update({
+            start: true
+        })
+}
+
+export function addToGallery(artID, playerNumber, playerCanvas){
+    if (playerNumber === 1) {
+        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+            .update({
+                piece1: playerCanvas,
+            })
+    } else if (playerNumber === 2) {
+        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+            .update({
+                piece2: playerCanvas,
+            })
+    } else if (playerNumber === 3) {
+        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+            .update({
+                piece3: playerCanvas,
+            })
+    } else if (playerNumber === 4) {
+        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+            .update({
+                piece4: playerCanvas,
+            })
+    }
+    
 }

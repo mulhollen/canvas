@@ -25,7 +25,9 @@ export function saveGame(gameID) {
             player2: false,
             player3: false,
             player4: false
-        })
+        }).then(
+            returnArt(1)
+        )
 }
 
 export function checkUser(gameID) {
@@ -37,18 +39,24 @@ export function checkUser(gameID) {
             return rebase.initializedApp.database().ref().child(`games/${gameID}`)
                 .update({
                     player2: true, 
-                })
+                }).then(
+                    returnArt(2)
+                )
         } else if (!data[0].player3) {
             return rebase.initializedApp.database().ref().child(`games/${gameID}`)
                 .update({
                     player3: true,
-                })
+                }).then(
+                    returnArt(3)
+                )
         } else if (!data[0].player4) {
             return rebase.initializedApp.database().ref().child(`games/${gameID}`)
                 .update({
                     player4: true,
                     start: true
-                })
+                }).then(
+                    returnArt(4)
+                )
         } else {
             console.log("game is full");
         }
@@ -58,6 +66,15 @@ export function checkUser(gameID) {
     })
 
 }
+
+export function returnArt(playerID){
+    rebase.fetch(`artwork/picasso/${playerID}`, {
+        context: this,
+    }).then(data => {
+        console.log("artwork data", data);
+    })
+}
+
 
 export function startGame(gameID){
     return rebase.initializedApp.database().ref().child(`games/${gameID}`)

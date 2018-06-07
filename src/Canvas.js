@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import qr from './gameQRphone.png';
 import './App.css';
+import { rebase } from './base';
 
 class Canvas extends Component {
     constructor(props) {
@@ -10,6 +11,24 @@ class Canvas extends Component {
             game: false,
             done: false
         };
+    }
+
+    componentDidMount() {
+        rebase.listenTo('games', {
+            context: this,
+            asArray: true,
+            then(data) {
+                console.log("listener data", data)
+                if (data[0] === undefined) {
+                    console.log('no data');
+                } else if (data[0].start === true) {
+                    this.setState({
+                        carousel: false,
+                        game: true,
+                    })
+                }
+            }
+        })
     }
 
     render() {

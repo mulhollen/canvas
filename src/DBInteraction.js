@@ -71,7 +71,7 @@ export function returnArt(playerID){
     rebase.fetch(`artwork/picasso/${playerID}`, {
         context: this,
     }).then(data => {
-        console.log("artwork data", data);
+        console.log("player artwork data", data);
     })
 }
 

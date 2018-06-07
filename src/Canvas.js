@@ -9,7 +9,10 @@ class Canvas extends Component {
         this.state = {
             carousel: true,
             game: false,
-            done: false
+            done: false,
+            artwork: null,
+            name: null,
+            artist: null,
         };
     }
 
@@ -25,6 +28,16 @@ class Canvas extends Component {
                     this.setState({
                         carousel: false,
                         game: true,
+                    })
+                    rebase.fetch(`artwork/picasso/`, {
+                        context: this,
+                    }).then(data => {
+                        console.log("artwork data", data.full);
+                        this.setState({
+                            artwork: data.full,
+                            name: data.name,
+                            artist: data.artist,
+                        })
                     })
                 }
             }
@@ -42,12 +55,22 @@ class Canvas extends Component {
             );
         }
         else if (this.state.game) {
-            // console.log('trying to render nashvilleopendata component');
-            return (
-                <div>
-                    <h1>game</h1>
-                </div>
-            )
+            if(this.state.artwork === null) {
+                return(
+                    <div>
+                        <h1>loading...</h1>
+                    </div>
+                )
+            } else {
+                return (
+                    <div>
+                        <img src={this.state.artwork} alt="game art" />
+                        <h1>{this.state.name}</h1>
+                        <h2>{this.state.artist}</h2>
+                    </div>
+                )
+            }
+            
         } else if(this.state.done) {
             return (
                 <div>

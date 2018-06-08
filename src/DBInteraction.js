@@ -72,6 +72,7 @@ export function returnArt(playerID){
         context: this,
     }).then(data => {
         console.log("player artwork data", data);
+        localStorage.setItem("artURL", JSON.stringify(data));
     })
 }
 

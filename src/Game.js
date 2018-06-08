@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {checkGame, startGame} from './DBInteraction';
+import { checkGame, startGame} from './DBInteraction';
 import { rebase } from './base';
 
 class Game extends Component {
@@ -32,6 +32,7 @@ class Game extends Component {
             }
         })
     }
+ 
 
     render() {
 
@@ -42,7 +43,7 @@ class Game extends Component {
                     <button onClick={() => startGame(1)}>Start</button>
                 </div>
             );
-        } else {
+        }else {
             return (
                 <div>
                     <h1>game time</h1>
@@ -54,4 +55,3 @@ class Game extends Component {
     }
 
 export default Game;
-

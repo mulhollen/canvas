@@ -8,6 +8,7 @@ class Game extends Component {
         super(props);
         this.state = {
             game: false,
+            artPiece: null,
         };
     }
     
@@ -25,6 +26,13 @@ class Game extends Component {
                 if(data[0] === undefined){
                     console.log('no data');
                 }else if(data[0].start === true) {
+                   if (localStorage.hasOwnProperty("artURL")){
+                    let url = localStorage.getItem("artURL")
+                    url = JSON.parse(url);
+                    this.setState({
+                        artPiece: url
+                    });
+                    }
                     this.setState({
                         game: true,
                     })
@@ -33,6 +41,8 @@ class Game extends Component {
         })
     }
  
+
+
 
     render() {
 
@@ -43,11 +53,12 @@ class Game extends Component {
                     <button onClick={() => startGame(1)}>Start</button>
                 </div>
             );
-        }else {
+        }else if(this.state.game) {
             return (
                 <div>
                     <h1>game time</h1>
-                </div>
+                    <img src={this.state.artPiece} alt="player art piece" />
+                 </div>
             );
         }
        

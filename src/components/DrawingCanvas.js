@@ -14,6 +14,11 @@ constructor(props) {
         height: 400
     };
 }
+
+    handleChangeComplete = (color) => {
+        this.setState({ color: color.hex });
+    };
+
 render() {
         return (
             
@@ -37,7 +42,7 @@ render() {
                         }}
                     >Undo</button>
                 <ChromePicker
-                    color={this.state.background}
+                    color={this.state.color}
                     onChangeComplete={this.handleChangeComplete}
                 />
                 <CanvasDraw

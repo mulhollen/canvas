@@ -5,12 +5,13 @@
   "homepage": "http://mulhollen.github.io/canvas",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
+    "re-base": "^3.2.2",
     "react": "^16.4.0",
+    "react-canvas-draw": "^0.1.9",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
     "react-router-transition": "^1.2.1",
-    "react-scripts": "1.1.4",
-    "re-base": "^3.2.2"
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "predeploy": "npm run build",

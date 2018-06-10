@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import qr from './gameQRphone.png';
 import './App.css';
 import { rebase } from './base';
-
 class Canvas extends Component {
     constructor(props) {
         super(props);

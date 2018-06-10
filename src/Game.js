@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { checkGame, startGame} from './DBInteraction';
 import { rebase } from './base';
+import DrawingCanvas from './components/DrawingCanvas';
+
 
 class Game extends Component {
     constructor(props) {
@@ -58,6 +60,7 @@ class Game extends Component {
                 <div>
                     <h1>game time</h1>
                     <img src={this.state.artPiece} alt="player art piece" />
+                    <DrawingCanvas />
                  </div>
             );
         }

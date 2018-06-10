@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CanvasDraw from "react-canvas-draw";
+import { ChromePicker } from 'react-color';
 
 
 class DrawingCanvas extends Component {
@@ -43,6 +44,10 @@ render() {
                             this.saveableCanvas.undo();
                         }}
                     >Undo</button>
+                <ChromePicker
+                    color={this.state.background}
+                    onChangeComplete={this.handleChangeComplete}
+                />
                 <CanvasDraw
                     ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
                     brushColor={this.state.color}

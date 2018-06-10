@@ -2,5 +2,6 @@
 - firebase
 - rebase
 - react canvas draw
+- react color
 - react router dom
 - bootstrap

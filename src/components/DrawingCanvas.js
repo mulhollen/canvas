@@ -83,10 +83,6 @@ render() {
                             this.saveableCanvas.undo();
                         }}
                     >Undo</button>
-                {/* <SketchPicker
-                    color={this.state.color}
-                    onChangeComplete={this.handleChangeComplete}
-                /> */}
 
                 <div>
                     <div style={styles.swatch} onClick={this.handleClick}>

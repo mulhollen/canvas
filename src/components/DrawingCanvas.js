@@ -5,23 +5,15 @@ import { ChromePicker } from 'react-color';
 
 class DrawingCanvas extends Component {
 
-    state = {
+
+constructor(props) {
+    super(props);
+    this.state = {
         color: "#ffc600",
         width: 400,
         height: 400
     };
-   
-    static defaultProps = {
-        loadTimeOffset: 5,
-        brushSize: 6,
-        brushColor: "#444",
-        canvasWidth: 400,
-        canvasHeight: 400,
-        disabled: false
-    };
-
-    
-
+}
 render() {
         return (
             

@@ -84,6 +84,10 @@ export function startGame(gameID){
         })
 }
 
+export function storeCanvas(filename, number) {
+    
+}
+
 export function addToGallery(artID, playerNumber, playerCanvas){
     if (playerNumber === 1) {
         return rebase.initializedApp.database().ref().child(`gallery/${artID}`)

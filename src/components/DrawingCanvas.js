@@ -67,9 +67,12 @@ render() {
                 <div >
                     <button
                         onClick={() => {
+                            
+                            
                             localStorage.setItem(
                                 "savedDrawing",
-                                this.saveableCanvas.getSaveData()
+                                this.saveableCanvas.toDataURL('image/png')
+                                // this.saveableCanvas.getSaveData()
                             );
                         }}
                     >Save</button>

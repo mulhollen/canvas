@@ -12,6 +12,10 @@ class Canvas extends Component {
             artwork: null,
             name: null,
             artist: null,
+            userArt1: null,
+            userArt2: null,
+            userArt3: null,
+            userArt4: null
         };
     }
 
@@ -39,6 +43,32 @@ class Canvas extends Component {
                         })
                     })
                 }
+            }
+        })
+        
+        // rebase.listenTo('games', {
+        //     context: this,
+        //     asArray: true,
+        //     then(data) {
+        //         if (data[0]=== undefined){
+        //             console.log("no player data")
+        //         } else if (data[0] === true) {
+        //             console.log("PLAYER DATA", data)
+        //         }
+        //     }
+        // })
+
+        rebase.listenTo('gallery', {
+            context: this,
+            asArray: true,
+            then(data) {
+                console.log("gallery data", data[0].piece3)
+                    this.setState({
+                        userArt1: data[0].piece1,
+                        userArt2: data[0].piece2,
+                        userArt3: data[0].piece3,
+                        userArt4: data[0].piece4,
+                    })
             }
         })
     }
@@ -74,6 +104,10 @@ class Canvas extends Component {
             return (
                 <div>
                     <h1>done</h1>
+                    <img src={this.state.userArt1} alt="userartwork" />
+                    <img src={this.state.userArt2} alt="userartwork" />
+                    <img src={this.state.userArt3} alt="userartwork" />
+                    <img src={this.state.userArt4} alt="userartwork" />                                        
                 </div>
             )
         } else {

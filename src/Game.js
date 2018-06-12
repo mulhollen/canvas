@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { checkGame, startGame} from './DBInteraction';
+import { checkGame, startGame } from './DBInteraction';
 import { rebase } from './base';
 import DrawingCanvas from './components/DrawingCanvas';
 
@@ -11,7 +11,9 @@ class Game extends Component {
         this.state = {
             game: false,
             artPiece: null,
+            done: false,
         };
+        this.drawingDone = this.drawingDone.bind(this);
     }
     
     componentWillMount(){
@@ -43,12 +45,16 @@ class Game extends Component {
         })
     }
  
+    drawingDone(playerID) {
+        console.log("you made it here");
+        
+    }
 
 
 
     render() {
 
-        if (!this.state.game) {
+        if (!this.state.game && !this.state.done) {
             return (
                 <div>
                     <h1>you made it here</h1>
@@ -60,9 +66,13 @@ class Game extends Component {
                 <div>
                     <h1>game time</h1>
                     <img src={this.state.artPiece} alt="player art piece" />
-                    <DrawingCanvas />
+                    <DrawingCanvas drawingDone={this.drawingDone} />
                  </div>
             );
+        } else if(this.state.done){
+            <div>
+                <h1>killer work!</h1>
+            </div>
         }
        
     }

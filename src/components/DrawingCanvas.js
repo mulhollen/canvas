@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import reactCSS from 'reactcss'
 import CanvasDraw from "react-canvas-draw";
 import { SketchPicker } from 'react-color';
+import { addToGallery } from '../DBInteraction';
+
 
 
 class DrawingCanvas extends Component {
@@ -67,13 +69,18 @@ render() {
                 <div >
                     <button
                         onClick={() => {
-                            
-                            
-                            localStorage.setItem(
-                                "savedDrawing",
-                                this.saveableCanvas.toDataURL('image/png')
-                                // this.saveableCanvas.getSaveData()
-                            );
+
+                            let playerID = localStorage.getItem("playerID")
+                            playerID = JSON.parse(playerID);
+
+                            addToGallery("Picasso", `${playerID}`, this.saveableCanvas.getSaveData());
+
+                            this.props.drawingDone(playerID);
+
+                            // localStorage.setItem(
+                            //     "savedDrawing",
+                            //     this.saveableCanvas.getSaveData()
+                            // );
                         }}
                     >Save</button>
                     <button
@@ -97,7 +104,7 @@ render() {
                     </div> : null}
 
                 </div>
-                <CanvasDraw
+                <CanvasDraw 
                     ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
                     brushColor={this.state.color}
                     canvasWidth={this.state.canvaswidth}

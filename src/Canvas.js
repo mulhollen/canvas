@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import qr from './gameQRphone.png';
 import './App.css';
 import { rebase } from './base';
+import CanvasDraw from "react-canvas-draw";
+
 class Canvas extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +22,8 @@ class Canvas extends Component {
     }
 
     componentDidMount() {
+
+        // listening for game start
         rebase.listenTo('games', {
             context: this,
             asArray: true,
@@ -46,23 +50,44 @@ class Canvas extends Component {
             }
         })
         
-        // rebase.listenTo('games', {
-        //     context: this,
-        //     asArray: true,
-        //     then(data) {
-        //         if (data[0]=== undefined){
-        //             console.log("no player data")
-        //         } else if (data[0] === true) {
-        //             console.log("PLAYER DATA", data)
-        //         }
-        //     }
-        // })
+        // listening for players
+        rebase.listenTo('games', {
+            context: this,
+            asArray: true,
+            then(data) {
+                if (data[0]=== undefined){
+                    console.log("no player data")
+                } else if (data[0]) {
+                    console.log("PLAYER DATA", data)
+                    if (data[0].player1 === true) {
+                        this.setState({
+                            player1: true
+                        })
+                    } 
+                    if(data[0].player2 === true) {
+                        this.setState({
+                            player2: true
+                        })
+                    } 
+                    if (data[0].player3 === true){
+                        this.setState({
+                            player3: true
+                        })
+                    } 
+                    if (data[0].player4 === true){
+                        this.setState({
+                            player4: true
+                        }) 
+                    }
+                }
+            }
+        })
 
+        // listening for gallery canvas pieces 
         rebase.listenTo('gallery', {
             context: this,
             asArray: true,
             then(data) {
-                console.log("gallery data", data[0].piece3)
                     this.setState({
                         userArt1: data[0].piece1,
                         userArt2: data[0].piece2,
@@ -71,6 +96,32 @@ class Canvas extends Component {
                     })
             }
         })
+
+        
+
+    }
+
+    componentDidUpdate(){
+        if(this.state.done && !this.state.game){
+        this.handleLoad();
+        }       
+    }
+
+    handleLoad = () => {
+    
+                this.loadableCanvas1.loadSaveData(
+                    this.state.userArt1
+                );
+                this.loadableCanvas2.loadSaveData(
+                    this.state.userArt2
+                );
+                this.loadableCanvas3.loadSaveData(
+                    this.state.userArt3
+                );
+                this.loadableCanvas4.loadSaveData(
+                    this.state.userArt4
+                );
+            
     }
 
     render() {
@@ -101,15 +152,42 @@ class Canvas extends Component {
             }
             
         } else if(this.state.done) {
-            return (
-                <div>
-                    <h1>done</h1>
-                    <img src={this.state.userArt1} alt="userartwork" />
-                    <img src={this.state.userArt2} alt="userartwork" />
-                    <img src={this.state.userArt3} alt="userartwork" />
-                    <img src={this.state.userArt4} alt="userartwork" />                                        
-                </div>
-            )
+                // this.displayCanvas(this.state.userArt1)
+            console.log("Canvas draw", this.state);
+                    return (
+                        <div id="artFrame">
+                            <div>
+                            <CanvasDraw
+                            id="1"
+                                disabled
+                                ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
+                            />
+                            </div>
+                            <div>
+                            <CanvasDraw
+                            id="2"
+                                disabled
+                                ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
+                            />
+                            </div>
+                            <div>
+                            <CanvasDraw
+                            id="3"
+                                disabled
+                                ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
+                            />
+                            </div>
+                            <div>
+                            <CanvasDraw
+                            id="4"
+                                disabled
+                                ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
+                            />
+                            </div>
+                        </div>
+                    )
+                
+            
         } else {
             return (
                 <div>

@@ -70,6 +70,7 @@ render() {
                     <button
                         onClick={() => {
 
+                            
                             let playerID = localStorage.getItem("playerID")
                             playerID = JSON.parse(playerID);
 
@@ -110,6 +111,8 @@ render() {
                     canvasWidth={this.state.canvaswidth}
                     canvasHeight={this.state.canvasheight}
                     />
+                
+                
             </div>
         );
     }

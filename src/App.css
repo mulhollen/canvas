@@ -1,8 +1,9 @@
-.artFrame {
-  display: grid;
-  grid-template-columns: auto auto;
+#artFrame {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 canvas {
-  display: inline-block;
+  display: inline;
 }
+

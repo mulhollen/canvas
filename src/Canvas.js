@@ -88,12 +88,17 @@ class Canvas extends Component {
             context: this,
             asArray: true,
             then(data) {
+                if(data[0] == undefined){
+                    console.log("nothing is in gallery")
+
+                } else if(data[0]) {
                     this.setState({
                         userArt1: data[0].piece1,
                         userArt2: data[0].piece2,
                         userArt3: data[0].piece3,
                         userArt4: data[0].piece4,
                     })
+                }
             }
         })
 

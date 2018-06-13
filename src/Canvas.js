@@ -33,8 +33,9 @@ class Canvas extends Component {
             then(data) {
                 console.log("listener data", data)
                 if (data[0] === undefined) {
-                    console.log('no data');
+                    console.log('Canvas: no game data');
                 } else if (data[0].start === true) {
+                    // listening to start game
                     this.setState({
                         carousel: false,
                         game: true,
@@ -59,29 +60,8 @@ class Canvas extends Component {
             asArray: true,
             then(data) {
                 if (data[0]=== undefined){
-                    console.log("no player data")
+                    console.log("Canvas: no player data")
                 } else if (data[0]) {
-                    console.log("PLAYER DATA", data)
-                    if (data[0].player1 === true) {
-                        this.setState({
-                            player1: true
-                        })
-                    }  
-                    if(data[0].player2 === true) {
-                        this.setState({
-                            player2: true
-                        })
-                    } 
-                    if (data[0].player3 === true){
-                        this.setState({
-                            player3: true
-                        })
-                    } 
-                    if (data[0].player4 === true){
-                        this.setState({
-                            player4: true
-                        }) 
-                    }
                     // listening for all players to be done
                     if (data[0].player1 === false && data[0].player2 === false && data[0].player3 === false && data[0].player4 === false && data[0].start === true) {
                         this.setState({

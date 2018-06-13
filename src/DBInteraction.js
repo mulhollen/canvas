@@ -10,7 +10,6 @@ export function checkGame(gameID) {
        } else {
            checkUser(gameID);
        }
-       console.log("data", data);
    }).catch(error => {
        console.log("data error");
    })    
@@ -60,7 +59,6 @@ export function checkUser(gameID) {
         } else {
             console.log("game is full");
         }
-        console.log("data", data);
     }).catch(error => {
         console.log("player error");
     })
@@ -72,7 +70,6 @@ export function returnArt(playerID){
     rebase.fetch(`artwork/picasso/${playerID}`, {
         context: this,
     }).then(data => {
-        console.log("player artwork data", data);
         localStorage.setItem("artURL", JSON.stringify(data));
     })
 }

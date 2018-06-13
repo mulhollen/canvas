@@ -78,10 +78,6 @@ render() {
 
                             this.props.drawingDone(playerID);
 
-                            // localStorage.setItem(
-                            //     "savedDrawing",
-                            //     this.saveableCanvas.getSaveData()
-                            // );
                         }}
                     >Save</button>
                     <button

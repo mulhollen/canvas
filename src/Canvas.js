@@ -63,7 +63,7 @@ class Canvas extends Component {
                         this.setState({
                             player1: true
                         })
-                    } 
+                    }  
                     if(data[0].player2 === true) {
                         this.setState({
                             player2: true
@@ -78,6 +78,12 @@ class Canvas extends Component {
                         this.setState({
                             player4: true
                         }) 
+                    }
+                    if (data[0].player1 === false && data[0].player2 === false && data[0].player3 === false && data[0].player4 === false && data[0].start === true) {
+                        this.setState({
+                            game: false,
+                            done: true
+                        })
                     }
                 }
             }
@@ -108,24 +114,32 @@ class Canvas extends Component {
 
     componentDidUpdate(){
         if(this.state.done && !this.state.game){
-        this.handleLoad();
+        this.loadArtwork();
         }       
     }
 
-    handleLoad = () => {
+    loadArtwork = () => {
     
-                this.loadableCanvas1.loadSaveData(
-                    this.state.userArt1
-                );
-                this.loadableCanvas2.loadSaveData(
-                    this.state.userArt2
-                );
-                this.loadableCanvas3.loadSaveData(
-                    this.state.userArt3
-                );
-                this.loadableCanvas4.loadSaveData(
-                    this.state.userArt4
-                );
+        if (this.state.userArt1){
+            this.loadableCanvas1.loadSaveData(
+                this.state.userArt1
+            );
+        }
+        if (this.state.userArt2){
+            this.loadableCanvas2.loadSaveData(
+                this.state.userArt2
+            );
+        }
+        if(this.state.userArt3){
+            this.loadableCanvas3.loadSaveData(
+                this.state.userArt3
+            );
+        }
+        if(this.state.userArt4){
+            this.loadableCanvas4.loadSaveData(
+                this.state.userArt4
+            );
+        }
             
     }
 

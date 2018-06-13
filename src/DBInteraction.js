@@ -130,3 +130,17 @@ export function addToGallery(artID, playerNumber, playerCanvas){
         }
     
 }
+
+export function endGame() {
+    rebase.remove('games', function (err) {
+        if (!err) {
+            console.log("remove game error")
+        }
+    });
+    rebase.remove('gallery', function (err) {
+        if (!err) {
+            console.log("remove gallery error")
+        }
+    });
+    
+}

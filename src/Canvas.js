@@ -3,6 +3,8 @@ import qr from './gameQRphone.png';
 import './App.css';
 import { rebase } from './base';
 import CanvasDraw from "react-canvas-draw";
+import { endGame } from './DBInteraction';
+
 
 class Canvas extends Component {
     constructor(props) {
@@ -19,6 +21,7 @@ class Canvas extends Component {
             userArt3: null,
             userArt4: null
         };
+        
     }
 
     componentDidMount() {
@@ -79,6 +82,7 @@ class Canvas extends Component {
                             player4: true
                         }) 
                     }
+                    // listening for all players to be done
                     if (data[0].player1 === false && data[0].player2 === false && data[0].player3 === false && data[0].player4 === false && data[0].start === true) {
                         this.setState({
                             game: false,
@@ -124,7 +128,7 @@ class Canvas extends Component {
             this.loadableCanvas1.loadSaveData(
                 this.state.userArt1
             );
-        }
+        } 
         if (this.state.userArt2){
             this.loadableCanvas2.loadSaveData(
                 this.state.userArt2
@@ -140,7 +144,19 @@ class Canvas extends Component {
                 this.state.userArt4
             );
         }
-            
+         console.log("reset game", this);
+        this.resetGame();
+    }
+
+    resetGame = () => {
+        setTimeout(function () {
+            this.setState({ 
+                carousel: true,
+                game: false,
+                done: false,
+            });
+            endGame();
+        }.bind(this), 5000);  // wait 5 seconds, then reset to false
     }
 
     render() {

@@ -31,12 +31,13 @@ class Game extends Component {
             then(data) {
                 console.log("listener data", data)
                 if(data[0] === undefined){
-                    console.log('no data');
+                    console.log('Game: no game data');
                     this.setState({
                         startingPad: true,
                         done: false
                     });
                 } else if (data[0].start === false){
+                    // listening for player local art data before game start
                     if (localStorage.hasOwnProperty("playerID")) {
                         let url = localStorage.getItem("artURL")
                         url = JSON.parse(url);
@@ -47,6 +48,8 @@ class Game extends Component {
                         });
                     }
                 } else if (data[0].start === true) {
+                    // listening for player local art data at game start 
+                    // & if the player doesn't have an ID they will be asked to wait for the next game
                     if (localStorage.hasOwnProperty("playerID")) {
                         let url = localStorage.getItem("artURL")
                         url = JSON.parse(url);

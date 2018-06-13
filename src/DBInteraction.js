@@ -10,7 +10,6 @@ export function checkGame(gameID) {
        } else {
            checkUser(gameID);
        }
-       console.log("data", data);
    }).catch(error => {
        console.log("data error");
    })    
@@ -60,7 +59,6 @@ export function checkUser(gameID) {
         } else {
             console.log("game is full");
         }
-        console.log("data", data);
     }).catch(error => {
         console.log("player error");
     })
@@ -68,10 +66,10 @@ export function checkUser(gameID) {
 }
 
 export function returnArt(playerID){
+    localStorage.setItem("playerID", `${playerID}`)
     rebase.fetch(`artwork/picasso/${playerID}`, {
         context: this,
     }).then(data => {
-        console.log("player artwork data", data);
         localStorage.setItem("artURL", JSON.stringify(data));
     })
 }
@@ -85,26 +83,63 @@ export function startGame(gameID){
 }
 
 export function addToGallery(artID, playerNumber, playerCanvas){
-    if (playerNumber === 1) {
+        
+        if (playerNumber === "1"){ 
         return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
             .update({
                 piece1: playerCanvas,
+            }).then( data =>{
+            return rebase.initializedApp.database().ref().child(`games/${1}`)
+                .update({
+                    player1: false,
+                })
             })
-    } else if (playerNumber === 2) {
-        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
-            .update({
-                piece2: playerCanvas,
-            })
-    } else if (playerNumber === 3) {
-        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
-            .update({
-                piece3: playerCanvas,
-            })
-    } else if (playerNumber === 4) {
-        return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
-            .update({
-                piece4: playerCanvas,
-            })
-    }
+        } else if (playerNumber === "2"){
+            return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+                .update({
+                    piece2: playerCanvas,
+                }).then(data => {
+                    return rebase.initializedApp.database().ref().child(`games/${1}`)
+                        .update({
+                            player2: false,
+                        })
+                })
+        } else if (playerNumber === "3"){
+            return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+                .update({
+                    piece3: playerCanvas,
+                }).then(data => {
+                    return rebase.initializedApp.database().ref().child(`games/${1}`)
+                        .update({
+                            player3: false,
+                        })
+                })
+        } else if (playerNumber === "4"){
+            return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
+                .update({
+                    piece4: playerCanvas,
+                }).then(data => {
+                    return rebase.initializedApp.database().ref().child(`games/${1}`)
+                        .update({
+                            player4: false,
+                        })
+                })
+        }
     
+}
+
+
+export function endCanvas() {
+    rebase.remove('games', function (err) {
+        if (!err) {
+            console.log("remove game error")
+        }
+    });
+    rebase.remove('gallery', function (err) {
+        if (!err) {
+            console.log("remove gallery error")
+        }
+    });
+    localStorage.removeItem('artURL');
+    localStorage.removeItem('playerID');
 }

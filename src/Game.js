@@ -10,15 +10,16 @@ class Game extends Component {
         super(props);
         this.state = {
             game: false,
+            waitingRoom: true,
             artPiece: null,
             done: false,
         };
         this.drawingDone = this.drawingDone.bind(this);
+        this.signIn = this.signIn.bind(this);
     }
     
     componentWillMount(){
-        // check and see if there's a game
-        checkGame(1);
+        
     }
 
     componentDidMount(){
@@ -43,46 +44,50 @@ class Game extends Component {
                 }
             }
         })
+    }
 
+    signIn = () => {
+        // check and see if there's a game
+        checkGame(1);
+        this.setState({
+            waitingRoom: false
+        })
     }
  
     drawingDone(playerID) {
-        console.log("you made it here", this);
-        this.setState({
-            done: true,
-            game: false
-        })
+        console.log("you made it here");
+        
     }
 
 
 
     render() {
 
-        if (!this.state.game && !this.state.done) {
+       if(this.state.waitingRoom){
+           return(
+               <div>
+                   <h1>you made it here</h1>
+                   <button onClick={() => this.signIn(1)}>Wanna Play?</button>
+               </div>
+           );
+       }else if (!this.state.game && !this.state.done && !this.state.waitingRoom) {
             return (
                 <div>
                     <button onClick={() => startGame(1)}>Start</button>
                 </div>
             );
-        }else if(this.state.game && !this.state.done) {
+        }else if(this.state.game) {
             return (
                 <div>
+                    <h1>game time</h1>
                     <img src={this.state.artPiece} alt="player art piece" />
                     <DrawingCanvas drawingDone={this.drawingDone} />
                  </div>
             );
         } else if(this.state.done){
-            return(
-                <div>
-                    <h1>killer work!</h1>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <h1>error</h1>
-                </div>
-            );
+            <div>
+                <h1>killer work!</h1>
+            </div>
         }
        
     }

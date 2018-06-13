@@ -91,21 +91,41 @@ export function addToGallery(artID, playerNumber, playerCanvas){
         return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
             .update({
                 piece1: playerCanvas,
+            }).then( data =>{
+            return rebase.initializedApp.database().ref().child(`games/${1}`)
+                .update({
+                    player1: false,
+                })
             })
         } else if (playerNumber === "2"){
             return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
                 .update({
                     piece2: playerCanvas,
+                }).then(data => {
+                    return rebase.initializedApp.database().ref().child(`games/${1}`)
+                        .update({
+                            player2: false,
+                        })
                 })
         } else if (playerNumber === "3"){
             return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
                 .update({
                     piece3: playerCanvas,
+                }).then(data => {
+                    return rebase.initializedApp.database().ref().child(`games/${1}`)
+                        .update({
+                            player3: false,
+                        })
                 })
         } else if (playerNumber === "4"){
             return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
                 .update({
                     piece4: playerCanvas,
+                }).then(data => {
+                    return rebase.initializedApp.database().ref().child(`games/${1}`)
+                        .update({
+                            player4: false,
+                        })
                 })
         }
     

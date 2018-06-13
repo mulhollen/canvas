@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import reactCSS from 'reactcss'
 import CanvasDraw from "react-canvas-draw";
 import { SketchPicker } from 'react-color';
-import { addToGallery } from '../DBInteraction';
+import { addToGallery, endCanvas } from '../DBInteraction';
 
 
 
@@ -92,6 +92,12 @@ render() {
                     >Undo</button>
 
                 <div>
+                <button
+                    onClick={() => {
+                        endCanvas();
+
+                    }}
+                >Cancel game</button>
                     <div style={styles.swatch} onClick={this.handleClick}>
                         <div style={styles.color} />
                     </div>

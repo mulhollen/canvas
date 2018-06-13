@@ -68,12 +68,12 @@ export function checkUser(gameID) {
 }
 
 export function returnArt(playerID){
+    localStorage.setItem("playerID", `${playerID}`)
     rebase.fetch(`artwork/picasso/${playerID}`, {
         context: this,
     }).then(data => {
         console.log("player artwork data", data);
         localStorage.setItem("artURL", JSON.stringify(data));
-        localStorage.setItem("playerID", `${playerID}`)
     })
 }
 
@@ -131,7 +131,8 @@ export function addToGallery(artID, playerNumber, playerCanvas){
     
 }
 
-export function endGame() {
+
+export function endCanvas() {
     rebase.remove('games', function (err) {
         if (!err) {
             console.log("remove game error")
@@ -142,5 +143,6 @@ export function endGame() {
             console.log("remove gallery error")
         }
     });
-    
+    localStorage.removeItem('artURL');
+    localStorage.removeItem('playerID');
 }

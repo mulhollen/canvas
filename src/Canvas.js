@@ -3,7 +3,7 @@ import qr from './gameQRphone.png';
 import './App.css';
 import { rebase } from './base';
 import CanvasDraw from "react-canvas-draw";
-import { endGame } from './DBInteraction';
+import { endCanvas } from './DBInteraction';
 
 
 class Canvas extends Component {
@@ -89,6 +89,14 @@ class Canvas extends Component {
                             done: true
                         })
                     }
+                    // cancel game catch
+                    if (data[0] === undefined) {
+                        this.setState({
+                            carousel: true,
+                            game: false,
+                            done: false,
+                        })
+                    }
                 }
             }
         })
@@ -98,7 +106,7 @@ class Canvas extends Component {
             context: this,
             asArray: true,
             then(data) {
-                if(data[0] == undefined){
+                if(data[0] === undefined){
                     console.log("nothing is in gallery")
 
                 } else if(data[0]) {
@@ -155,8 +163,9 @@ class Canvas extends Component {
                 game: false,
                 done: false,
             });
-            endGame();
-        }.bind(this), 5000);  // wait 5 seconds, then reset to false
+            endCanvas();
+            
+        }.bind(this), 10000);  // wait 30 seconds, then reset to false
     }
 
     render() {

@@ -14,7 +14,7 @@ constructor(props) {
     this.state = {
         displayColorPicker: false,
         color: "#000",
-        canvaswidth: 400,
+        canvaswidth: 300,
         canvasheight: 400
     };
 }

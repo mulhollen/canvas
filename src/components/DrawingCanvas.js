@@ -15,22 +15,21 @@ constructor(props) {
         displayColorPicker: false,
         color: "#000",
         canvaswidth: 400,
-        canvasheight: 400
+        canvasheight: 400,
     };
 }
 
     handleChangeComplete = (color) => {
         this.setState({ color: color.hex });
-    };
+    }
     
     handleClick = () => {
         this.setState({ displayColorPicker: !this.state.displayColorPicker })
-    };
+    }
 
     handleClose = () => {
         this.setState({ displayColorPicker: false })
-    };
-
+    }
 
 render() {
 
@@ -66,11 +65,10 @@ render() {
 
         return (
             
-                <div >
+                <div>
                     <button
                         onClick={() => {
 
-                            
                             let playerID = localStorage.getItem("playerID")
                             playerID = JSON.parse(playerID);
 

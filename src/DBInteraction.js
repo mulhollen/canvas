@@ -170,6 +170,11 @@ export function endCanvas() {
             console.log("remove gallery error")
         }
     });
+    rebase.remove('artCounter', function (err) {
+        if (!err) {
+            console.log("remove gallery error")
+        }
+    });
     localStorage.removeItem('artURL');
     localStorage.removeItem('playerID');
     localStorage.clear();

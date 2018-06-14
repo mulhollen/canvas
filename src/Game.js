@@ -38,18 +38,19 @@ class Game extends Component {
                     });
                 } else if (data[0].start === false){
                     // listening for player local art data before game start
-                    if (localStorage.hasOwnProperty("artURL")) {
-                        let url = localStorage.getItem("artURL")
-                        url = JSON.parse(url);
-                        this.setState({
-                            artPiece: url,
-                            game: false,
-                            done: false,
-                            waitingRoom: false,
-                            startingPad: false,
-
-                        });
-                    }
+                    rebase.fetch(`artCounter`, {
+                        context: this,
+                    }).then(data => {
+                        console.log("random art generator data", data.number);
+                        if (data === undefined) {
+                            this.setState({
+                                game: false,
+                                done: false,
+                                waitingRoom: false,
+                                startingPad: false,
+                            });
+                        }
+                    })
                 } else if (data[0].start === true) {
                     // listening for player local art data at game start 
                     // & if the player doesn't have an ID they will be asked to wait for the next game

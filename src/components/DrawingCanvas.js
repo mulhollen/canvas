@@ -74,7 +74,7 @@ render() {
                             let playerID = localStorage.getItem("playerID")
                             playerID = JSON.parse(playerID);
 
-                            addToGallery("Picasso", `${playerID}`, this.saveableCanvas.getSaveData());
+                            addToGallery("playerDrawing", `${playerID}`, this.saveableCanvas.getSaveData());
 
                             this.props.drawingDone(playerID);
 

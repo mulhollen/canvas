@@ -38,7 +38,7 @@ class Game extends Component {
                     });
                 } else if (data[0].start === false){
                     // listening for player local art data before game start
-                    if (localStorage.hasOwnProperty("playerID")) {
+                    if (localStorage.hasOwnProperty("artURL")) {
                         let url = localStorage.getItem("artURL")
                         url = JSON.parse(url);
                         this.setState({

@@ -76,7 +76,10 @@ class Game extends Component {
         checkGame(1);
         // set the entry state to false
         this.setState({
-            startingPad: false
+            startingPad: false,
+            game: false,
+            waitingRoom: false,
+            done: false,
         })
     }
 

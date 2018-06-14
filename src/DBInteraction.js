@@ -172,4 +172,5 @@ export function endCanvas() {
     });
     localStorage.removeItem('artURL');
     localStorage.removeItem('playerID');
+    localStorage.clear();
 }

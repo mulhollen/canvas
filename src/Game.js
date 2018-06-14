@@ -43,6 +43,9 @@ class Game extends Component {
                         url = JSON.parse(url);
                         this.setState({
                             artPiece: url,
+                            game: false,
+                            done: false,
+                            waitingRoom: false,
                             startingPad: false,
 
                         });

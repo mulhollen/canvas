@@ -14,8 +14,10 @@ class Game extends Component {
             waitingRoom: false,
             artPiece: null,
             done: false,
+            localImage: "show",            
         };
         this.drawingDone = this.drawingDone.bind(this);
+        // this.hideLocalImage = this.hideLocalImage.bind(this);
     }
 
 
@@ -87,6 +89,15 @@ class Game extends Component {
         })
     }
 
+    hideLocalImage(){
+        if (this.state.localImage === "show") {
+            this.setState({ localImage: "hide" })
+        } else {
+            this.setState({ localImage: "show" })
+        }
+    }
+
+
     drawingDone(playerID) {
         this.setState({
             done: true,
@@ -124,8 +135,8 @@ class Game extends Component {
        }else if(this.state.game) {
             return (
                 <div>
-                    <h1>game time</h1>
-                    <img src={this.state.artPiece} alt="player art piece" />
+                    <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
+                    <button onClick={() => this.hideLocalImage()}>Hide Image</button>
                     <DrawingCanvas drawingDone={this.drawingDone} />
                  </div>
             );

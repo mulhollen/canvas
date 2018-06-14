@@ -38,11 +38,14 @@ class Game extends Component {
                     });
                 } else if (data[0].start === false){
                     // listening for player local art data before game start
-                    if (localStorage.hasOwnProperty("playerID")) {
+                    if (localStorage.hasOwnProperty("artURL")) {
                         let url = localStorage.getItem("artURL")
                         url = JSON.parse(url);
                         this.setState({
                             artPiece: url,
+                            game: false,
+                            done: false,
+                            waitingRoom: false,
                             startingPad: false,
 
                         });
@@ -76,7 +79,10 @@ class Game extends Component {
         checkGame(1);
         // set the entry state to false
         this.setState({
-            startingPad: false
+            startingPad: false,
+            game: false,
+            waitingRoom: false,
+            done: false,
         })
     }
 

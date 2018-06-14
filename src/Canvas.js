@@ -40,15 +40,25 @@ class Canvas extends Component {
                         carousel: false,
                         game: true,
                     })
-                    rebase.fetch(`artwork/picasso/`, {
+
+                    rebase.fetch(`artCounter`, {
                         context: this,
                     }).then(data => {
-                        console.log("artwork data", data.full);
-                        this.setState({
-                            artwork: data.full,
-                            name: data.name,
-                            artist: data.artist,
-                        })
+                        if (data === undefined) {
+                            console.log("Canvas art return error");
+                        } else {
+                            rebase.fetch(`artwork/${data.number}/`, {
+                                context: this,
+
+                            }).then(data => {
+                                console.log("artwork data", data.full);
+                                this.setState({
+                                    artwork: data.full,
+                                    name: data.name,
+                                    artist: data.artist,
+                                })
+                            })
+                        }
                     })
                 }
             }

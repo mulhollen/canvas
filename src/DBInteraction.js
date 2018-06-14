@@ -65,13 +65,43 @@ export function checkUser(gameID) {
 
 }
 
+
+
 export function returnArt(playerID){
     localStorage.setItem("playerID", `${playerID}`)
-    rebase.fetch(`artwork/picasso/${playerID}`, {
-        context: this,
-    }).then(data => {
-        localStorage.setItem("artURL", JSON.stringify(data));
-    })
+
+    console.log("player ID in return Art", playerID);
+
+    if (playerID == "1"){
+        console.log("did we make it into the first if statement in return art?");
+        let randomNum = Math.floor(Math.random() * Math.floor(4));
+        return rebase.initializedApp.database().ref().child(`artCounter`)
+            .update({
+                number: randomNum
+            }).then(
+                rebase.fetch(`artwork/${randomNum}/${playerID}`, {
+                    context: this,
+                }).then(data => {
+                    localStorage.setItem("artURL", JSON.stringify(data));
+                })
+            )
+    } else {
+        rebase.fetch(`artCounter`, {
+            context: this,
+        }).then(data => {
+            console.log("random art generator data", data.number);
+            if(data === undefined){
+                console.log("art return error");
+            } else {
+                rebase.fetch(`artwork/${data.number}/${playerID}`, {
+                    context: this,
+                
+                }).then(data => {
+                    localStorage.setItem("artURL", JSON.stringify(data));
+                })
+            }
+        })
+    }    
 }
 
 
@@ -142,4 +172,5 @@ export function endCanvas() {
     });
     localStorage.removeItem('artURL');
     localStorage.removeItem('playerID');
+    localStorage.clear();
 }

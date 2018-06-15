@@ -90,6 +90,8 @@ class Game extends Component {
     }
 
     hideLocalImage(){
+        console.log("we made it to hideLocalImage", this);
+        
         if (this.state.localImage === "show") {
             this.setState({ localImage: "hide" })
         } else {
@@ -109,35 +111,40 @@ class Game extends Component {
 
        if(this.state.startingPad){
            return(
-               <div>
-                   <h1>you made it here</h1>
-                   <button onClick={() => this.signIn(1)}>Wanna Play?</button>
+               <div className="vh100">
+                    <div className="h-100 d-flex justify-content-center align-items-center">
+                        <button className="button-blue" onClick={() => this.signIn(1)}><h1 className="p-3 m-0">JOIN GAME</h1></button>
+                    </div>
                </div>
            );
         }else if (!this.state.game && !this.state.done && !this.state.waitingRoom && !this.state.startingPad) {
             return (
-                <div>
-                    <button onClick={() => startGame(1)}>Start</button>
+                <div className="vh100">
+                    <div className="h-100 d-flex justify-content-center align-items-center flex-column">
+                        <button className="button-blue" onClick={() => startGame(1)}><h1 className="p-3 m-0">START GAME</h1></button>
+                        <h2 className="text-center py-3">or wait for more players</h2>
+                    </div>
                 </div>
             );
         }else if(this.state.waitingRoom) {
             return (
-                <div>
-                    <h1>wait for the next game!</h1>
+                <div className="vh100">
+                    <h1 className="text-center d-flex align-items-center">wait for the next game!</h1>
                 </div>
             );
        } else if (this.state.done) {
            return(
-            <div>
-                <h1>killer work!</h1>
+            <div className="vh100">
+                <h1 className="text-center d-flex align-items-center">killer work!</h1>
             </div>
            );
        }else if(this.state.game) {
             return (
                 <div>
-                    <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
-                    <button onClick={() => this.hideLocalImage()}>Hide Image</button>
-                    <DrawingCanvas drawingDone={this.drawingDone} />
+                    <div className="d-flex flex-column localArt my-3 mx-auto">
+                        <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
+                    </div>
+                    <DrawingCanvas hideLocalImage={this.hideLocalImage} drawingDone={this.drawingDone} />
                  </div>
             );
         }

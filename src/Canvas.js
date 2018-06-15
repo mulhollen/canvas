@@ -26,7 +26,7 @@ class Canvas extends Component {
 
     componentDidMount() {
 
-        // listening for game start
+        // listening for game start & art return for canvas
         rebase.listenTo('games', {
             context: this,
             asArray: true,

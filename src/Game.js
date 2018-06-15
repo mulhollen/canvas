@@ -3,6 +3,7 @@ import './App.css';
 import { checkGame, startGame } from './DBInteraction';
 import { rebase } from './base';
 import DrawingCanvas from './components/DrawingCanvas';
+import CanvasDraw from "react-canvas-draw";
 
 
 class Game extends Component {
@@ -141,11 +142,13 @@ class Game extends Component {
        }else if(this.state.game) {
             return (
                 <div className="landscape">
-                    <div className="d-flex flex-column localArt my-3 mx-auto">
-                        <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
+                    <div className="landscape">
+                        <div className="d-flex flex-column localArt my-3 mx-auto">
+                            <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
+                        </div>
+                        <DrawingCanvas hideLocalImage={this.hideLocalImage} drawingDone={this.drawingDone} />
                     </div>
-                    <DrawingCanvas hideLocalImage={this.hideLocalImage} drawingDone={this.drawingDone} />
-                 </div>
+                </div>
             );
         }
        

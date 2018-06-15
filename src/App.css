@@ -68,14 +68,30 @@ svg {
   width: 300px;
   height: auto;
 }
-.center-canvas {
-margin-left: 2.2rem;
+ 
+.change-btn-orientation {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
 }
+
+
+.drawing-buttons {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;  
+  justify-content: space-around;
+}
+
+.center-canvas {
+margin-left: 10%;
+margin-right: 0;
+}
+
 /* Hide Local Artwork While Drawing */
 .hide {
   display: none;
 }
-
 
 /* Canvas Styling */
 #artFrame {
@@ -85,6 +101,7 @@ margin-left: 2.2rem;
 
 canvas {
   display: inline;
+  margin: 0;
 }
 
 /* Media Queries */
@@ -94,5 +111,25 @@ canvas {
     display: flex;
     display: -webkit-flex;
     flex-direction: row;
+  }
+
+  .change-btn-orientation {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    /* width: 100vw; */
+  }
+
+  .center-canvas {
+    margin: 0;
+  }
+
+  .drawing-buttons {
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+
+  .center-buttons{
+    margin-left: -70%;
   }
  }

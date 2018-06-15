@@ -68,7 +68,9 @@ svg {
   width: 300px;
   height: auto;
 }
-
+.center-canvas {
+margin-left: 2.2rem;
+}
 /* Hide Local Artwork While Drawing */
 .hide {
   display: none;
@@ -84,3 +86,13 @@ svg {
 canvas {
   display: inline;
 }
+
+/* Media Queries */
+
+@media all and (orientation:landscape) {
+  .landscape {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+  }
+ }

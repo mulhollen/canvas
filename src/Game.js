@@ -17,7 +17,7 @@ class Game extends Component {
             localImage: "show",            
         };
         this.drawingDone = this.drawingDone.bind(this);
-        // this.hideLocalImage = this.hideLocalImage.bind(this);
+        this.hideLocalImage = this.hideLocalImage.bind(this);
     }
 
 
@@ -91,7 +91,7 @@ class Game extends Component {
 
     hideLocalImage(){
         console.log("we made it to hideLocalImage", this);
-        
+
         if (this.state.localImage === "show") {
             this.setState({ localImage: "hide" })
         } else {
@@ -140,7 +140,7 @@ class Game extends Component {
            );
        }else if(this.state.game) {
             return (
-                <div>
+                <div className="landscape">
                     <div className="d-flex flex-column localArt my-3 mx-auto">
                         <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
                     </div>

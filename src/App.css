@@ -99,6 +99,14 @@ margin-right: 0;
 }
 
 /* Canvas Styling */
+
+.qr-position{
+  position: absolute;
+  z-index: 2;
+  margin-top: -20%;
+  margin-left: 63%;
+}
+
 .artFrame {
   display: flex;
   flex-direction: row;

@@ -4,6 +4,7 @@ import './App.css';
 import { rebase } from './base';
 import CanvasDraw from "react-canvas-draw";
 import { endCanvas } from './DBInteraction';
+import Carousel from './components/Carousel';
 
 
 class Canvas extends Component {
@@ -168,8 +169,14 @@ class Canvas extends Component {
 
         if (this.state.carousel) {
             return (
-                <div className="d-flex justify-content-center my-5 mh-100">
-                    <img src={qr} alt="qr code" />
+                <div>
+                    <div className="d-flex justify-content-center my-5 mh-100">
+                        <Carousel />
+                    </div>
+                    <div className="qr-position">
+                        <img src={qr} alt="qr code" />
+                        <h1>SCAN TO START</h1>
+                    </div>
                 </div>
             );
         }
@@ -193,44 +200,40 @@ class Canvas extends Component {
             }
             
         } else if(this.state.done) {
-                // this.displayCanvas(this.state.userArt1)
-            console.log("Canvas draw", this.state);
-                    return (
-                        <div className="d-flex justify-content-center">
-                            <div id="artFrame mx-5">
-                                <div className="artFrame">
-                                <CanvasDraw
-                                id="1"
-                                    disabled
-                                    ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
-                                />
-                                <CanvasDraw
-                                id="2"
-                                    disabled
-                                    ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
-                                />
-                                </div>
-                                <div className="artFrame">
-                                <CanvasDraw
-                                id="3"
-                                    disabled
-                                    ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
-                                />
-                                <CanvasDraw
-                                id="4"
-                                    disabled
-                                    ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
-                                />
-                                </div>
-                            </div>
-                            <div className="align-self-center mx-5">
-                                <h1>{this.state.name.toUpperCase()}</h1>
-                                <h2>{this.state.artist} &amp; Others</h2>
-                            </div>
+            return (
+                <div className="d-flex justify-content-center">
+                    <div id="artFrame mx-5">
+                        <div className="artFrame">
+                        <CanvasDraw
+                        id="1"
+                            disabled
+                            ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
+                        />
+                        <CanvasDraw
+                        id="2"
+                            disabled
+                            ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
+                        />
                         </div>
-                    )
-                
-            
+                        <div className="artFrame">
+                        <CanvasDraw
+                        id="3"
+                            disabled
+                            ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
+                        />
+                        <CanvasDraw
+                        id="4"
+                            disabled
+                            ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
+                        />
+                        </div>
+                    </div>
+                    <div className="align-self-center mx-5">
+                        <h1>{this.state.name.toUpperCase()}</h1>
+                        <h2>{this.state.artist} &amp; Others</h2>
+                    </div>
+                </div>
+            )
         } else {
             return (
                 <div className="d-flex justify-content-center flex-column my-5 mh-100">

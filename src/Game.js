@@ -3,7 +3,7 @@ import './App.css';
 import { checkGame, startGame } from './DBInteraction';
 import { rebase } from './base';
 import DrawingCanvas from './components/DrawingCanvas';
-import CanvasDraw from "react-canvas-draw";
+// import CanvasDraw from "react-canvas-draw";
 
 
 class Game extends Component {

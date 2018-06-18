@@ -122,7 +122,13 @@ export function addToGallery(artID, playerNumber, playerCanvas){
                 .update({
                     player1: false,
                 })
-            })
+            }).then(
+                rebase.initializedApp.database().ref().child(`permanentGallery/${artID}`)
+                .push({
+                    artPiece: artID,
+                    piece1: playerCanvas,
+                })
+            )
         } else if (playerNumber === "2"){
             return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
                 .update({
@@ -132,7 +138,12 @@ export function addToGallery(artID, playerNumber, playerCanvas){
                         .update({
                             player2: false,
                         })
-                })
+                }).then(
+                    rebase.initializedApp.database().ref().child(`permanentGallery/${artID}`)
+                        .push({
+                            piece2: playerCanvas,
+                        })
+                )
         } else if (playerNumber === "3"){
             return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
                 .update({
@@ -142,7 +153,12 @@ export function addToGallery(artID, playerNumber, playerCanvas){
                         .update({
                             player3: false,
                         })
-                })
+                }).then(
+                    rebase.initializedApp.database().ref().child(`permanentGallery/${artID}`)
+                        .push({
+                            piece3: playerCanvas,
+                        })
+                )
         } else if (playerNumber === "4"){
             return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
                 .update({
@@ -152,7 +168,12 @@ export function addToGallery(artID, playerNumber, playerCanvas){
                         .update({
                             player4: false,
                         })
-                })
+                }).then(
+                    rebase.initializedApp.database().ref().child(`permanentGallery/${artID}`)
+                        .push({
+                            piece4: playerCanvas,
+                        })
+                )
         }
     
 }

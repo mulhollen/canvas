@@ -111,7 +111,6 @@ render() {
 
                             // Takes player to a waiting room while other players finish their drawings
                             this.props.drawingDone(playerID);
-                            this.props.hideLocalImage();
                         }}
                         ><h2 className="p-1 m-0">DONE</h2></button>
                     </div>

@@ -104,6 +104,7 @@ class Game extends Component {
     drawingDone(playerID) {
         this.setState({
             done: true,
+            localImage: "show",
         })
         console.log("you made it here", this.state.done);
     }
@@ -123,20 +124,20 @@ class Game extends Component {
                 <div className="vh100">
                     <div className="h-100 d-flex justify-content-center align-items-center flex-column">
                         <button className="button-blue" onClick={() => startGame(1)}><h1 className="p-3 m-0">START GAME</h1></button>
-                        <h2 className="text-center py-3">or wait for more players</h2>
+                        <h3 className="text-center py-3">or wait for more players</h3>
                     </div>
                 </div>
             );
         }else if(this.state.waitingRoom) {
             return (
-                <div className="vh100">
-                    <h1 className="text-center d-flex align-items-center">wait for the next game!</h1>
+                <div className="my-5">
+                    <h3 className="text-center display-4">wait for the next game!</h3>
                 </div>
             );
        } else if (this.state.done) {
            return(
-            <div className="vh100">
-                <h1 className="text-center d-flex align-items-center">killer work!</h1>
+            <div className="my-5">
+                <h3 className="text-center display-4">killer work!</h3>
             </div>
            );
        }else if(this.state.game) {
@@ -146,7 +147,7 @@ class Game extends Component {
                         <div className="d-flex flex-column localArt my-3 mx-auto">
                             <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
                         </div>
-                        <DrawingCanvas hideLocalImage={this.hideLocalImage} drawingDone={this.drawingDone} />
+                        <DrawingCanvas drawingDone={this.drawingDone} />
                     </div>
                 </div>
             );

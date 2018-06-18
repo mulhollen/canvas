@@ -120,28 +120,60 @@ class Canvas extends Component {
         }       
     }
 
+    grabDataArt = (piece) => {
+
+    rebase.fetch(`artCounter`, {
+        context: this,
+    }).then(data => {
+        console.log("random art generator data", data.number);
+        if (data === undefined) {
+            console.log("art return error");
+        } else {
+            rebase.fetch(`artwork/${data.number}/${piece}`, {
+                context: this,
+
+            }).then(data => {
+                //grabable data for art quads if players aren't there
+            })
+        }
+    })
+}
+
     loadArtwork = () => {
     
         if (this.state.userArt1){
             this.loadableCanvas1.loadSaveData(
                 this.state.userArt1
             );
-        } 
+        } else {
+            this.grabDataArt(1);
+        }
+
         if (this.state.userArt2){
             this.loadableCanvas2.loadSaveData(
                 this.state.userArt2
             );
+        } else {
+            this.grabDataArt(1);
         }
+
+        
         if(this.state.userArt3){
             this.loadableCanvas3.loadSaveData(
                 this.state.userArt3
             );
+        } else {
+            this.grabDataArt(1);
         }
+
         if(this.state.userArt4){
             this.loadableCanvas4.loadSaveData(
                 this.state.userArt4
             );
+        } else {
+            this.grabDataArt(1);
         }
+
          console.log("reset game", this);
         this.resetGame();
     }
@@ -155,7 +187,7 @@ class Canvas extends Component {
             });
             endCanvas();
             
-        }.bind(this), 10000);  // wait 30 seconds, then reset to false
+        }.bind(this), 30000);  // wait 30 seconds, then reset to false
     }
 
     render() {
@@ -191,7 +223,7 @@ class Canvas extends Component {
             console.log("Canvas draw", this.state);
                     return (
                         <div className="d-flex justify-content-center">
-                            <div id="artFrame">
+                            <div id="artFrame mx-5">
                                 <div className="artFrame">
                                 <CanvasDraw
                                 id="1"
@@ -217,14 +249,19 @@ class Canvas extends Component {
                                 />
                                 </div>
                             </div>
+                            <div className="align-self-center mx-5">
+                                <h1>{this.state.name.toUpperCase()}</h1>
+                                <h2>{this.state.artist} &amp; Others</h2>
+                            </div>
                         </div>
                     )
                 
             
         } else {
             return (
-                <div className="d-flex justify-content-center my-5 mh-100">
-                    <h1>error</h1>
+                <div className="d-flex justify-content-center flex-column my-5 mh-100">
+                    <h1 className="text-center">Sorry</h1>
+                    <h3>Looks like there's been an error</h3>
                 </div>
             )
         }

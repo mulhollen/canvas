@@ -26,7 +26,8 @@ color: white;
 }
 
 p {
-font-family: 'Montserrat', sans-serif;  
+font-family: 'Montserrat', sans-serif; 
+color: white; 
 }
 
 body {
@@ -57,6 +58,10 @@ svg {
 
 .text-red {
   color: #eab8c8ff;
+}
+
+.blue-border {
+  border-bottom: 3px solid #57c1e8;
 }
 /* Game Styling */
 

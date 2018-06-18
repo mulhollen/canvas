@@ -169,12 +169,12 @@ class Canvas extends Component {
 
         if (this.state.carousel) {
             return (
-                <div className="d-flex justify-content-center flex-row">
-                    <div className="d-flex justify-content-center my-5 mh-100">
+                <div className="d-flex justify-content-center flex-row vh100">
+                    <div className="d-flex justify-content-center mh-100 col-md-8">
                         <Carousel />
                     </div>
-                    <div className="ml-3 mb-5 align-self-end">
-                        <img src={qr} alt="qr code" />
+                    <div className="mb-2 align-self-end col-md-4">
+                        <img className="mb-2" src={qr} alt="qr code" />
                         <h1>SCAN TO START</h1>
                     </div>
                 </div>
@@ -202,7 +202,7 @@ class Canvas extends Component {
         } else if(this.state.done) {
             return (
                 <div className="d-flex justify-content-center">
-                    <div id="artFrame mx-5">
+                    <div id="artFrame mx-5 col-md-8">
                         <div className="artFrame">
                         <CanvasDraw
                         id="1"
@@ -228,7 +228,7 @@ class Canvas extends Component {
                         />
                         </div>
                     </div>
-                    <div className="align-self-center mx-5">
+                    <div className="align-self-center mx-5 col-md-4">
                         <h1>{this.state.name.toUpperCase()}</h1>
                         <h2>{this.state.artist} &amp; Others</h2>
                     </div>

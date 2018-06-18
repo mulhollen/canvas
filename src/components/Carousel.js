@@ -94,7 +94,7 @@ class Carousel extends Component {
                 showImg: true
             })
             this.grabNext();
-        }.bind(this), 30000);  
+        }.bind(this), 60000);  
     }
 
     grabNext = () => {
@@ -103,7 +103,7 @@ class Carousel extends Component {
                 showImg: false
             })
             this.fetchGallery();
-        }.bind(this), 30000);  
+        }.bind(this), 60000);  
     }
 
     render() {
@@ -142,7 +142,7 @@ class Carousel extends Component {
         } else {
             return(
                 <div>
-                    <img src={this.state.full} alt="full image" />
+                    <img className="mt-3" src={this.state.full} alt="full artwork" />
                 </div>
             );
         }

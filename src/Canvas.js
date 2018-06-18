@@ -190,34 +190,32 @@ class Canvas extends Component {
                 // this.displayCanvas(this.state.userArt1)
             console.log("Canvas draw", this.state);
                     return (
-                        <div id="artFrame">
-                            <div>
-                            <CanvasDraw
-                            id="1"
-                                disabled
-                                ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
-                            />
-                            </div>
-                            <div>
-                            <CanvasDraw
-                            id="2"
-                                disabled
-                                ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
-                            />
-                            </div>
-                            <div>
-                            <CanvasDraw
-                            id="3"
-                                disabled
-                                ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
-                            />
-                            </div>
-                            <div>
-                            <CanvasDraw
-                            id="4"
-                                disabled
-                                ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
-                            />
+                        <div className="d-flex justify-content-center">
+                            <div id="artFrame">
+                                <div className="artFrame">
+                                <CanvasDraw
+                                id="1"
+                                    disabled
+                                    ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
+                                />
+                                <CanvasDraw
+                                id="2"
+                                    disabled
+                                    ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
+                                />
+                                </div>
+                                <div className="artFrame">
+                                <CanvasDraw
+                                id="3"
+                                    disabled
+                                    ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
+                                />
+                                <CanvasDraw
+                                id="4"
+                                    disabled
+                                    ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
+                                />
+                                </div>
                             </div>
                         </div>
                     )
@@ -225,7 +223,7 @@ class Canvas extends Component {
             
         } else {
             return (
-                <div>
+                <div className="d-flex justify-content-center my-5 mh-100">
                     <h1>error</h1>
                 </div>
             )

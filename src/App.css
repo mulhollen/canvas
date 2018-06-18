@@ -94,9 +94,9 @@ margin-right: 0;
 }
 
 /* Canvas Styling */
-#artFrame {
+.artFrame {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
   justify-content: center;
 }
 

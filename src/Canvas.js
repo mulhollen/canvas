@@ -169,11 +169,11 @@ class Canvas extends Component {
 
         if (this.state.carousel) {
             return (
-                <div>
+                <div className="d-flex justify-content-center flex-row">
                     <div className="d-flex justify-content-center my-5 mh-100">
                         <Carousel />
                     </div>
-                    <div className="qr-position">
+                    <div className="ml-3 mb-5 align-self-end">
                         <img src={qr} alt="qr code" />
                         <h1>SCAN TO START</h1>
                     </div>

@@ -23,7 +23,7 @@ class Carousel extends Component {
         this.fetchGallery();
     }
 
-    fetchGallery = () => {
+    fetchGallery = (artNumber) => {
         // listening for gallery canvas pieces 
         rebase.fetch('permanentGallery', {
             context: this,
@@ -81,19 +81,28 @@ class Carousel extends Component {
                             this.state.userArt4
                         );
                     }
-                    this.grabNext();
+                    this.grabArt();
                 }
             }
         })
     }
     
 
-    grabNext = () => {
+    grabArt = () => {
         setTimeout(function () {
             this.setState({
                 showImg: true
             })
+            this.grabNext();
+        }.bind(this), 30000);  
+    }
 
+    grabNext = () => {
+        setTimeout(function () {
+            this.setState({
+                showImg: false
+            })
+            this.fetchGallery();
         }.bind(this), 30000);  
     }
 

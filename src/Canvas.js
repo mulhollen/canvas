@@ -120,41 +120,19 @@ class Canvas extends Component {
         }       
     }
 
-    grabDataArt = (piece) => {
-
-    rebase.fetch(`artCounter`, {
-        context: this,
-    }).then(data => {
-        console.log("random art generator data", data.number);
-        if (data === undefined) {
-            console.log("art return error");
-        } else {
-            rebase.fetch(`artwork/${data.number}/${piece}`, {
-                context: this,
-
-            }).then(data => {
-                //grabable data for art quads if players aren't there
-            })
-        }
-    })
-}
-
+    
     loadArtwork = () => {
     
         if (this.state.userArt1){
             this.loadableCanvas1.loadSaveData(
                 this.state.userArt1
             );
-        } else {
-            this.grabDataArt(1);
         }
 
         if (this.state.userArt2){
             this.loadableCanvas2.loadSaveData(
                 this.state.userArt2
             );
-        } else {
-            this.grabDataArt(1);
         }
 
         
@@ -162,16 +140,12 @@ class Canvas extends Component {
             this.loadableCanvas3.loadSaveData(
                 this.state.userArt3
             );
-        } else {
-            this.grabDataArt(1);
         }
 
         if(this.state.userArt4){
             this.loadableCanvas4.loadSaveData(
                 this.state.userArt4
             );
-        } else {
-            this.grabDataArt(1);
         }
 
          console.log("reset game", this);

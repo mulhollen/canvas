@@ -3,6 +3,7 @@ import './App.css';
 import { checkGame, startGame } from './DBInteraction';
 import { rebase } from './base';
 import DrawingCanvas from './components/DrawingCanvas';
+import CanvasDraw from "react-canvas-draw";
 
 
 class Game extends Component {
@@ -17,7 +18,7 @@ class Game extends Component {
             localImage: "show",            
         };
         this.drawingDone = this.drawingDone.bind(this);
-        // this.hideLocalImage = this.hideLocalImage.bind(this);
+        this.hideLocalImage = this.hideLocalImage.bind(this);
     }
 
 
@@ -90,6 +91,8 @@ class Game extends Component {
     }
 
     hideLocalImage(){
+        console.log("we made it to hideLocalImage", this);
+
         if (this.state.localImage === "show") {
             this.setState({ localImage: "hide" })
         } else {
@@ -101,6 +104,7 @@ class Game extends Component {
     drawingDone(playerID) {
         this.setState({
             done: true,
+            localImage: "show",
         })
         console.log("you made it here", this.state.done);
     }
@@ -109,36 +113,43 @@ class Game extends Component {
 
        if(this.state.startingPad){
            return(
-               <div>
-                   <h1>you made it here</h1>
-                   <button onClick={() => this.signIn(1)}>Wanna Play?</button>
+               <div className="vh100">
+                    <div className="h-100 d-flex justify-content-center align-items-center">
+                        <button className="button-blue" onClick={() => this.signIn(1)}><h1 className="p-3 m-0">JOIN GAME</h1></button>
+                    </div>
                </div>
            );
         }else if (!this.state.game && !this.state.done && !this.state.waitingRoom && !this.state.startingPad) {
             return (
-                <div>
-                    <button onClick={() => startGame(1)}>Start</button>
+                <div className="vh100">
+                    <div className="h-100 d-flex justify-content-center align-items-center flex-column">
+                        <button className="button-blue" onClick={() => startGame(1)}><h1 className="p-3 m-0">START GAME</h1></button>
+                        <h3 className="text-center py-3">or wait for more players</h3>
+                    </div>
                 </div>
             );
         }else if(this.state.waitingRoom) {
             return (
-                <div>
-                    <h1>wait for the next game!</h1>
+                <div className="my-5">
+                    <h3 className="text-center display-4">wait for the next game!</h3>
                 </div>
             );
        } else if (this.state.done) {
            return(
-            <div>
-                <h1>killer work!</h1>
+            <div className="my-5">
+                <h3 className="text-center display-4">killer work!</h3>
             </div>
            );
        }else if(this.state.game) {
             return (
-                <div>
-                    <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
-                    <button onClick={() => this.hideLocalImage()}>Hide Image</button>
-                    <DrawingCanvas drawingDone={this.drawingDone} />
-                 </div>
+                <div className="landscape">
+                    <div className="landscape">
+                        <div className="d-flex flex-column localArt my-3 mx-auto">
+                            <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
+                        </div>
+                        <DrawingCanvas hideLocalImage={this.hideLocalImage} drawingDone={this.drawingDone} />
+                    </div>
+                </div>
             );
         }
        

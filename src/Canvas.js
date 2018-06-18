@@ -26,7 +26,7 @@ class Canvas extends Component {
 
     componentDidMount() {
 
-        // listening for game start
+        // listening for game start & art return for canvas
         rebase.listenTo('games', {
             context: this,
             asArray: true,
@@ -162,8 +162,7 @@ class Canvas extends Component {
 
         if (this.state.carousel) {
             return (
-                <div>
-                    <h1>carousel</h1>
+                <div className="d-flex justify-content-center my-5 mh-100">
                     <img src={qr} alt="qr code" />
                 </div>
             );
@@ -177,10 +176,12 @@ class Canvas extends Component {
                 )
             } else {
                 return (
-                    <div>
-                        <img src={this.state.artwork} alt="game art" />
-                        <h1>{this.state.name}</h1>
-                        <h2>{this.state.artist}</h2>
+                    <div className="d-flex justify-content-center my-5 mh-100">
+                        <img className="mr-5" src={this.state.artwork} alt="game art" />
+                        <div className="align-self-center">
+                            <h1>{this.state.name.toUpperCase()}</h1>
+                            <h2>{this.state.artist}</h2>
+                        </div>
                     </div>
                 )
             }
@@ -189,34 +190,32 @@ class Canvas extends Component {
                 // this.displayCanvas(this.state.userArt1)
             console.log("Canvas draw", this.state);
                     return (
-                        <div id="artFrame">
-                            <div>
-                            <CanvasDraw
-                            id="1"
-                                disabled
-                                ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
-                            />
-                            </div>
-                            <div>
-                            <CanvasDraw
-                            id="2"
-                                disabled
-                                ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
-                            />
-                            </div>
-                            <div>
-                            <CanvasDraw
-                            id="3"
-                                disabled
-                                ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
-                            />
-                            </div>
-                            <div>
-                            <CanvasDraw
-                            id="4"
-                                disabled
-                                ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
-                            />
+                        <div className="d-flex justify-content-center">
+                            <div id="artFrame">
+                                <div className="artFrame">
+                                <CanvasDraw
+                                id="1"
+                                    disabled
+                                    ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
+                                />
+                                <CanvasDraw
+                                id="2"
+                                    disabled
+                                    ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
+                                />
+                                </div>
+                                <div className="artFrame">
+                                <CanvasDraw
+                                id="3"
+                                    disabled
+                                    ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
+                                />
+                                <CanvasDraw
+                                id="4"
+                                    disabled
+                                    ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
+                                />
+                                </div>
                             </div>
                         </div>
                     )
@@ -224,7 +223,7 @@ class Canvas extends Component {
             
         } else {
             return (
-                <div>
+                <div className="d-flex justify-content-center my-5 mh-100">
                     <h1>error</h1>
                 </div>
             )

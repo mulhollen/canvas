@@ -1,12 +1,136 @@
-#artFrame {
+/* CMA BLUE #57c1e8 */
+/* CMA Secondary Red #eab8c8ff */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+h1 {
+  /* should be in all caps */
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+color: #57c1e8;
+font-size: 1.5rem;
+}
+
+h2 {
+  /* should be in all caps */
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+color: #57c1e8;
+font-size: 1rem;
+}
+
+h3 {
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+font-size: 1rem;
+color: white;
+}
+
+p {
+font-family: 'Montserrat', sans-serif;  
+}
+
+body {
+  background-color: black;
+}
+
+svg {
+  fill: white;
+}
+
+.button-blue {
+  border: 3px solid #57c1e8;
+  border-radius: 7px;
+  background-color: black;
+}
+
+.button-white {
+  border: 3px solid white;
+  border-radius: 7px;
+  background-color: black;
+}
+
+.button-red {
+  border: 3px solid #eab8c8ff;
+  border-radius: 7px;
+  background-color: black;
+}
+
+.text-red {
+  color: #eab8c8ff;
+}
+/* Game Styling */
+
+.vh100 {
+  height: 100vh;
+}
+
+.localArt {
+  width: 300px;
+  height: auto;
+}
+ 
+.change-btn-orientation {
   display: flex;
-  flex-flow: row wrap;
+  display: -webkit-flex;
+  flex-direction: column;
+}
+
+
+.drawing-buttons {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;  
+  justify-content: space-around;
+}
+
+.center-canvas {
+margin-left: 10%;
+margin-right: 0;
+}
+
+/* Hide Local Artwork While Drawing */
+.hide {
+  display: none;
+}
+
+/* Canvas Styling */
+.artFrame {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 canvas {
   display: inline;
+  margin: 0;
 }
 
-.hide {
-  display: none;
-}
+/* Media Queries */
+
+@media all and (orientation:landscape) {
+  .landscape {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+  }
+
+  .change-btn-orientation {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    /* width: 100vw; */
+  }
+
+  .center-canvas {
+    margin: 0;
+  }
+
+  .drawing-buttons {
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+
+  .center-buttons{
+    margin-left: -70%;
+  }
+ }

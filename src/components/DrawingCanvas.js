@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import reactCSS from 'reactcss'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import CanvasDraw from "react-canvas-draw";
 import { SketchPicker } from 'react-color';
 import { addToGallery, endCanvas } from '../DBInteraction';
@@ -14,8 +15,10 @@ constructor(props) {
         displayColorPicker: false,
         color: "#57c1e8",
         canvaswidth: 300,
-        canvasheight: 400
+        canvasheight: 400,
+        modal: false,
     };
+    this.toggle = this.toggle.bind(this);
 }
 
     handleChangeComplete = (color) => {
@@ -28,6 +31,12 @@ constructor(props) {
 
     handleClose = () => {
         this.setState({ displayColorPicker: false })
+    }
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
     }
 
 render() {
@@ -99,7 +108,23 @@ render() {
                 {/* done and cancel game buttons */}
                 <div className="center-buttons">
                     <div className="d-flex m-3 justify-content-around">
-                        <button className="button-red col-md-4 mx-2" onClick={() => { endCanvas(); }}><h3 className="p-1 m-0 text-red">CANCEL GAME</h3></button>
+                        <button className="button-red col-md-4 mx-2" onClick={this.toggle}>{this.props.buttonLabel}><h3 className="p-1 m-0 text-red">CANCEL GAME</h3></button>
+                        <div>
+                            {/* <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button> */}
+                            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                                <ModalBody>
+                                    Are you sure you want to end the game?
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button className="button-red col-md-4 mx-2" onClick={() => { endCanvas(); }}>CANCEL GAME</Button>{' '}
+                                    <Button className="button-blue col-md-4 mx-2" onClick={this.toggle}>CLOSE</Button>
+                                </ModalFooter>
+                            </Modal>
+                        </div>
+
+
+
+
 
                         <button className="button-blue col-md-4 mx-2" onClick={() => {
                             // grabs player ID from local storage

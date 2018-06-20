@@ -162,7 +162,7 @@ class Canvas extends Component {
             });
             endCanvas();
             
-        }.bind(this), 30000);  // wait 30 seconds, then reset to false
+        }.bind(this), 60000);  // wait 30 seconds, then reset to false
     }
 
     render() {

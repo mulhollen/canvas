@@ -111,7 +111,7 @@ class Carousel extends Component {
         if(this.state.showImg === false){
             return (
                 <div className="d-flex justify-content-center">
-                    <div id="artFrame mx-5">
+                    <div id="artFrame mx-5 fadeInandOut">
                         <div className="artFrame">
                             <CanvasDraw
                                 id="1"
@@ -142,7 +142,7 @@ class Carousel extends Component {
         } else {
             return(
                 <div>
-                    <img className="mt-3" src={this.state.full} alt="full artwork" />
+                    <img className="mt-3 fadeInandOut" src={this.state.full} alt="full artwork" />
                 </div>
             );
         }

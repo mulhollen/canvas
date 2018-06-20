@@ -131,8 +131,9 @@ class Game extends Component {
             );
         }else if(this.state.waitingRoom) {
             return (
-                <div className="my-5">
-                    <h3 className="text-center display-4">This game is full - Sit back and enjoy the show</h3>
+                <div className="my-5 w-75 mx-auto d-flex flex-column justify-content-center mt-5 pt-5">
+                    <h1 className="text-center display-5 pb-3 blue-border">GAME FULL</h1>
+                    <p className="pt-3">Sit back and enjoy the show.</p>
                 </div>
             );
        } else if (this.state.done) {

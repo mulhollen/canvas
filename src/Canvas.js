@@ -190,7 +190,7 @@ class Canvas extends Component {
             } else {
                 return (
                     <div className="d-flex justify-content-center my-5 mh-100">
-                        <img className="mr-5" src={this.state.artwork} alt="game art" />
+                        <img className="mr-5 canvas-art" src={this.state.artwork} alt="game art" />
                         <div className="align-self-center">
                             <h1>{this.state.name.toUpperCase()}</h1>
                             <h2>{this.state.artist}</h2>

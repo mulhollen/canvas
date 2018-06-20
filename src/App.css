@@ -30,7 +30,16 @@ font-family: 'Montserrat', sans-serif;
 color: white; 
 }
 
+.p-dark {
+  color: black;
+}
+
 body {
+  background-color: black;
+}
+
+button {
+  border: none;
   background-color: black;
 }
 
@@ -48,6 +57,8 @@ svg {
   border: 3px solid #57c1e8;
   border-radius: 7px;
   font-family: 'Montserrat', sans-serif;
+  color: black;
+  background-color: white;
 }
 
 .button-white {
@@ -66,6 +77,8 @@ svg {
   border: 3px solid #eab8c8ff;
   border-radius: 7px;
   font-family: 'Montserrat', sans-serif;
+  color: black;
+  background-color: white;  
 }
 
 .text-red {
@@ -83,7 +96,8 @@ svg {
 
 .localArt {
   width: 300px;
-  height: auto;
+  height: 400px;
+  object-fit: contain;  
 }
  
 .change-btn-orientation {
@@ -106,7 +120,7 @@ margin-right: 0;
 }
 
 /* Hide Local Artwork While Drawing */
-.hide {
+#hide {
   display: none;
 }
 

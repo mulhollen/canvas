@@ -109,18 +109,16 @@ render() {
                 <div className="center-buttons">
                     <div className="d-flex m-3 justify-content-around">
                         <button className="button-red col-md-4 mx-2" onClick={this.toggle}>{this.props.buttonLabel}><h3 className="p-1 m-0 text-red">CANCEL GAME</h3></button>
-                        <div>
                             {/* <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button> */}
-                            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                                <ModalBody>
-                                    Are you sure you want to end the game?
-                                </ModalBody>
-                                <ModalFooter>
-                                    <Button className="button-red col-md-4 mx-2" onClick={() => { endCanvas(); }}>CANCEL GAME</Button>{' '}
-                                    <Button className="button-blue col-md-4 mx-2" onClick={this.toggle}>CLOSE</Button>
-                                </ModalFooter>
-                            </Modal>
-                        </div>
+                        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                            <ModalBody>
+                                <p className="p-dark">Are you sure you want to end the game?</p>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button className="button-blue-white col-md-4 mx-2" onClick={this.toggle}>CLOSE</Button>
+                                <Button className="button-red-white col-md-4 mx-2" onClick={() => { endCanvas(); }}>CANCEL GAME</Button>{' '}
+                            </ModalFooter>
+                        </Modal>
 
 
 

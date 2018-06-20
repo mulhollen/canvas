@@ -147,8 +147,8 @@ class Game extends Component {
             return (
                 <div className="landscape">
                     <div className="landscape">
-                        <div className="d-flex flex-column localArt my-3 mx-auto">
-                            <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
+                        <div className="d-flex flex-column align-items-center my-3 mx-auto">
+                            <img src={this.state.artPiece} className="localArt" id={this.state.localImage} alt="player art piece" />
                         </div>
                         <DrawingCanvas hideLocalImage={this.hideLocalImage} drawingDone={this.drawingDone} />
                     </div>

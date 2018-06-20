@@ -26,10 +26,20 @@ color: white;
 }
 
 p {
-font-family: 'Montserrat', sans-serif;  
+font-family: 'Montserrat', sans-serif; 
+color: white; 
+}
+
+.p-dark {
+  color: black;
 }
 
 body {
+  background-color: black;
+}
+
+button {
+  border: none;
   background-color: black;
 }
 
@@ -41,6 +51,14 @@ svg {
   border: 3px solid #57c1e8;
   border-radius: 7px;
   background-color: black;
+}
+
+.button-blue-white {
+  border: 3px solid #57c1e8;
+  border-radius: 7px;
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  background-color: white;
 }
 
 .button-white {
@@ -55,8 +73,20 @@ svg {
   background-color: black;
 }
 
+.button-red-white {
+  border: 3px solid #eab8c8ff;
+  border-radius: 7px;
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  background-color: white;  
+}
+
 .text-red {
   color: #eab8c8ff;
+}
+
+.blue-border {
+  border-bottom: 3px solid #57c1e8;
 }
 /* Game Styling */
 
@@ -66,7 +96,8 @@ svg {
 
 .localArt {
   width: 300px;
-  height: auto;
+  height: 400px;
+  object-fit: contain;  
 }
  
 .change-btn-orientation {
@@ -89,11 +120,35 @@ margin-right: 0;
 }
 
 /* Hide Local Artwork While Drawing */
-.hide {
+#hide {
   display: none;
 }
 
 /* Canvas Styling */
+
+.qr-position{
+  position: absolute;
+  z-index: 2;
+  margin-top: -20%;
+  margin-left: 63%;
+}
+
+.canvas-art {
+  /* width: 600px; */
+  height: 800px;
+}
+
+.fadeInandOut {
+    opacity: 1;
+    animation: fade 2s linear;
+}
+
+
+@keyframes fadeInandOut {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
+
 .artFrame {
   display: flex;
   flex-direction: row;

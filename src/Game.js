@@ -3,7 +3,7 @@ import './App.css';
 import { checkGame, startGame } from './DBInteraction';
 import { rebase } from './base';
 import DrawingCanvas from './components/DrawingCanvas';
-import CanvasDraw from "react-canvas-draw";
+// import CanvasDraw from "react-canvas-draw";
 
 
 class Game extends Component {
@@ -76,6 +76,7 @@ class Game extends Component {
                 }
             }
         })
+
     }
 
     signIn = () => {
@@ -124,28 +125,30 @@ class Game extends Component {
                 <div className="vh100">
                     <div className="h-100 d-flex justify-content-center align-items-center flex-column">
                         <button className="button-blue" onClick={() => startGame(1)}><h1 className="p-3 m-0">START GAME</h1></button>
-                        <h3 className="text-center py-3">or wait for more players</h3>
+                        <h3 className="text-center py-3">Or wait for more players</h3>
                     </div>
                 </div>
             );
         }else if(this.state.waitingRoom) {
             return (
-                <div className="my-5">
-                    <h3 className="text-center display-4">wait for the next game!</h3>
+                <div className="my-5 w-75 mx-auto d-flex flex-column justify-content-center mt-5 pt-5">
+                    <h1 className="text-center display-5 pb-3 blue-border">GAME FULL</h1>
+                    <p className="pt-3">Sit back and enjoy the show.</p>
                 </div>
             );
        } else if (this.state.done) {
            return(
-            <div className="my-5">
-                <h3 className="text-center display-4">killer work!</h3>
+            <div className="my-5 w-75 mx-auto d-flex flex-column justify-content-center mt-5 pt-5">
+                <h1 className="text-center display-5 pb-3 blue-border">KILLER WORK!</h1>
+                <p className="pt-3">Keep an eye on the canvas and wait for the other players to finish.</p>
             </div>
            );
        }else if(this.state.game) {
             return (
                 <div className="landscape">
                     <div className="landscape">
-                        <div className="d-flex flex-column localArt my-3 mx-auto">
-                            <img src={this.state.artPiece} className={this.state.localImage} alt="player art piece" />
+                        <div className="d-flex flex-column align-items-center my-3 mx-auto">
+                            <img src={this.state.artPiece} className="localArt" id={this.state.localImage} alt="player art piece" />
                         </div>
                         <DrawingCanvas hideLocalImage={this.hideLocalImage} drawingDone={this.drawingDone} />
                     </div>

@@ -4,6 +4,7 @@ import './App.css';
 import { rebase } from './base';
 import CanvasDraw from "react-canvas-draw";
 import { endCanvas } from './DBInteraction';
+import Carousel from './components/Carousel';
 
 
 class Canvas extends Component {
@@ -120,28 +121,34 @@ class Canvas extends Component {
         }       
     }
 
+    
     loadArtwork = () => {
     
         if (this.state.userArt1){
             this.loadableCanvas1.loadSaveData(
                 this.state.userArt1
             );
-        } 
+        }
+
         if (this.state.userArt2){
             this.loadableCanvas2.loadSaveData(
                 this.state.userArt2
             );
         }
+
+        
         if(this.state.userArt3){
             this.loadableCanvas3.loadSaveData(
                 this.state.userArt3
             );
         }
+
         if(this.state.userArt4){
             this.loadableCanvas4.loadSaveData(
                 this.state.userArt4
             );
         }
+
          console.log("reset game", this);
         this.resetGame();
     }
@@ -155,15 +162,21 @@ class Canvas extends Component {
             });
             endCanvas();
             
-        }.bind(this), 10000);  // wait 30 seconds, then reset to false
+        }.bind(this), 60000);  // wait 30 seconds, then reset to false
     }
 
     render() {
 
         if (this.state.carousel) {
             return (
-                <div className="d-flex justify-content-center my-5 mh-100">
-                    <img src={qr} alt="qr code" />
+                <div className="d-flex justify-content-center flex-row vh100">
+                    <div className="d-flex justify-content-center mh-100 col-md-8">
+                        <Carousel />
+                    </div>
+                    <div className="mb-2 align-self-end col-md-4">
+                        <img className="mb-2" src={qr} alt="qr code" />
+                        <h1>SCAN TO START</h1>
+                    </div>
                 </div>
             );
         }
@@ -177,7 +190,7 @@ class Canvas extends Component {
             } else {
                 return (
                     <div className="d-flex justify-content-center my-5 mh-100">
-                        <img className="mr-5" src={this.state.artwork} alt="game art" />
+                        <img className="mr-5 canvas-art" src={this.state.artwork} alt="game art" />
                         <div className="align-self-center">
                             <h1>{this.state.name.toUpperCase()}</h1>
                             <h2>{this.state.artist}</h2>
@@ -187,44 +200,45 @@ class Canvas extends Component {
             }
             
         } else if(this.state.done) {
-                // this.displayCanvas(this.state.userArt1)
-            console.log("Canvas draw", this.state);
-                    return (
-                        <div className="d-flex justify-content-center">
-                            <div id="artFrame">
-                                <div className="artFrame">
-                                <CanvasDraw
-                                id="1"
-                                    disabled
-                                    ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
-                                />
-                                <CanvasDraw
-                                id="2"
-                                    disabled
-                                    ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
-                                />
-                                </div>
-                                <div className="artFrame">
-                                <CanvasDraw
-                                id="3"
-                                    disabled
-                                    ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
-                                />
-                                <CanvasDraw
-                                id="4"
-                                    disabled
-                                    ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
-                                />
-                                </div>
-                            </div>
+            return (
+                <div className="d-flex justify-content-center">
+                    <div id="artFrame mx-5 col-md-8">
+                        <div className="artFrame">
+                        <CanvasDraw
+                        id="1"
+                            disabled
+                            ref={canvasDraw => (this.loadableCanvas1 = canvasDraw)}
+                        />
+                        <CanvasDraw
+                        id="2"
+                            disabled
+                            ref={canvasDraw => (this.loadableCanvas2 = canvasDraw)}
+                        />
                         </div>
-                    )
-                
-            
+                        <div className="artFrame">
+                        <CanvasDraw
+                        id="3"
+                            disabled
+                            ref={canvasDraw => (this.loadableCanvas3 = canvasDraw)}
+                        />
+                        <CanvasDraw
+                        id="4"
+                            disabled
+                            ref={canvasDraw => (this.loadableCanvas4 = canvasDraw)}
+                        />
+                        </div>
+                    </div>
+                    <div className="align-self-center mx-5 col-md-4">
+                        <h1>{this.state.name.toUpperCase()}</h1>
+                        <h2>{this.state.artist} &amp; Others</h2>
+                    </div>
+                </div>
+            )
         } else {
             return (
-                <div className="d-flex justify-content-center my-5 mh-100">
-                    <h1>error</h1>
+                <div className="d-flex justify-content-center flex-column my-5 mh-100">
+                    <h1 className="text-center">Sorry</h1>
+                    <h3>Looks like there's been an error</h3>
                 </div>
             )
         }

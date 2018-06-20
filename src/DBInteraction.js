@@ -73,7 +73,6 @@ export function returnArt(playerID){
     console.log("player ID in return Art", playerID);
 
     if (playerID == "1"){
-        console.log("did we make it into the first if statement in return art?");
         let randomNum = Math.floor(Math.random() * Math.floor(4));
         return rebase.initializedApp.database().ref().child(`artCounter`)
             .update({
@@ -113,7 +112,6 @@ export function startGame(gameID){
 }
 
 export function addToGallery(artID, playerNumber, playerCanvas){
-        
         if (playerNumber === "1"){ 
         return rebase.initializedApp.database().ref().child(`gallery/${artID}`)
             .update({
@@ -157,7 +155,6 @@ export function addToGallery(artID, playerNumber, playerCanvas){
         }
     
 }
-
 
 export function endCanvas() {
     rebase.remove('games', function (err) {

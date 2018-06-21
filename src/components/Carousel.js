@@ -76,7 +76,7 @@ class Carousel extends Component {
                 showImg: true
             })
             this.grabNext();
-        }.bind(this), 60000);  
+        }.bind(this), 120000);  
     }
 
     grabNext = () => {
@@ -85,7 +85,7 @@ class Carousel extends Component {
                 showImg: false,
             })
             this.showGallery();
-        }.bind(this), 60000);  
+        }.bind(this), 120000);  
     }
 
     render() {

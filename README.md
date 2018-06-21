@@ -1,5 +1,5 @@
 # Canvas
-
+![canvas logo](./readmeimg/Canvas.png)
 Canvas is a multi-player, gamified, interactive art experience in the vain of The Cleveland Museum of Art ARTLENS Gallery exhibits. Canvas pits one to four players against each other to create a sort of exquisite corps of a broken-up piece of fine art.
 
 ## The User

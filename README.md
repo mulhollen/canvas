@@ -1,10 +1,5 @@
-# Canvas
-![canvas logo](./readmeimg/Canvas.png)
-Canvas is a multi-player, gamified, interactive art experience in the vain of The Cleveland Museum of Art ARTLENS Gallery exhibits. Canvas pits one to four players against each other to create a sort of exquisite corps of a broken-up piece of fine art.
-
 ## The User
 ![the user](./readmeimg/sidandchar.jpg)
-Sidney and Charlie are the couple that spend their weekends looking for the next cool thing to do. Find them wandering in local breweries and shops, seeking out the next "it" restaurants, lounging and listening to live, local music. They love to love to get out and experience a new twist on an old hang. When it comes to fine art, Sid and Char are the couple that likes it but feels they’re missing something something from the process. They’re more likely to go to a museum or gallery that includes some type of interaction; the interaction makes them feel like they’re “getting it.”
 
 ## The Challenge
 How might I create an interactive game that teaches players to notice and understand more about fine art. How can I make fine art fun? How can I pay homage to The Cleveland Museum of Art, which inspired me to become a front end developer?

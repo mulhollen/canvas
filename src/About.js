@@ -10,7 +10,7 @@ class Routes extends Component {
         return (
                 <div className="d-flex flex-column justify-content-center mt-5 pt-5 align-items-center">
                     <Link className="button-blue text-center p-3 m-3 col-md-3" to='/Game'><h2>GO TO GAMEPLAY</h2></Link>
-                    <Link className="button-blue text-center p-3 m-3 col-md-3" to='/Canvas'><h2>STARTUP CANVAS</h2></Link>
+                    <Link className="button-blue text-center p-3 m-3 col-md-3" to='/Projection'><h2>STARTUP CANVAS</h2></Link>
                 </div>
         );
     }

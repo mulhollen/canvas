@@ -13,9 +13,9 @@ class Routes extends Component {
         return (
             <Router>
                 <div>
-                    <Route exact path='/' component={About} />
+                    <Route exact path='/Canvas' component={About} />
                     <Route path='/Game' component={Game} />
-                    <Route path='/Canvas' component={Canvas} />
+                    <Route path='/Projection' component={Canvas} />
                 </div>
             </Router>
         );

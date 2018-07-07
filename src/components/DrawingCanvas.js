@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import reactCSS from 'reactcss'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import CanvasDraw from "react-canvas-draw";
 import { SketchPicker } from 'react-color';
 import { addToGallery, endCanvas } from '../DBInteraction';

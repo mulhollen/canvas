@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Game from './Game';
-import Canvas from './Canvas';
+// import Game from './Game';
+// import Canvas from './Canvas';
 import './App.css';
 
 class Routes extends Component {

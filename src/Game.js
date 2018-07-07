@@ -25,8 +25,8 @@ class Game extends Component {
 
     componentDidMount(){
 
-        let artURL = localStorage.getItem("artURL")
-        artURL = JSON.parse(artURL);
+        // let artURL = localStorage.getItem("artURL")
+        // artURL = JSON.parse(artURL);
 
         rebase.listenTo('games', {
             context: this,

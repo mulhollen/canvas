@@ -72,7 +72,7 @@ export function returnArt(playerID){
 
     console.log("player ID in return Art", playerID);
 
-    if (playerID == "1"){
+    if (playerID === "1"){
         let randomNum = Math.floor(Math.random() * Math.floor(4));
         return rebase.initializedApp.database().ref().child(`artCounter`)
             .update({
